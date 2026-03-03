@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  font-family: 'Roboto Mono', monospace;
+  background: #121212;
+  color: #e0e0e0;
+}
+
+header, footer {
+  text-align: center;
+  padding: 2rem;
+  background: #1c1c1c;
+}
+
+h1, h2 {
+  font-weight: 400;
+  color: #c0c0ff;
+}
+
+section {
+  padding: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: #1c1c1c;
+  border: 1px solid #333;
+  padding: 1rem;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  border-color: #6666ff;
+}
+
+a {
+  color: #8888ff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
