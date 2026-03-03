@@ -1,113 +1,29 @@
-/* --- Reset / podstawy --- */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-  background: #121212;
-  color: #eee;
-  line-height: 1.4;
-  min-height: 100vh;
-  padding: 20px;
-}
-
-/* --- Nagłówek --- */
-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-header h1 {
-  font-size: 1.8em;
-  color: #fff;
-}
-
-/* --- Sekcja Narzędzia – statyczne karty z cieniem --- */
-#tools .grid {
-  display: flex;             
-  flex-wrap: wrap;           
-  justify-content: center;   
-  gap: 8px;                  /* mniejsze odstępy między kartami */
-}
-
-#tools .card {
-  background: #1c1c1c;      /* ciemne tło */
-  border-radius: 6px;
-  border: 1px solid #222;
-  padding: 10px;             
-  width: 150px;              /* mniejsze, żeby zmieściło się więcej kart */
-  text-align: center;
-  cursor: default;           
-  box-shadow: 0 2px 5px rgba(0,0,0,0.5); /* lekki cień */
-  transition: none;          /* brak animacji */
-}
-
-#tools .card h3 {
-  margin: 4px 0;
-  font-size: 0.95em;
-  font-weight: bold;
-  color: #eee;
-}
-
-#tools .card p {
-  margin: 2px 0;
-  font-size: 0.8em;
-  color: #ccc;
-}
-
-/* --- Sekcja Projekty / Demonstracje --- */
-#projects {
-  margin-top: 40px;
-}
-
-#projects .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+/* Wyśrodkowanie całej galerii */
+#gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
 }
 
-#projects .card {
-  background: #1c1c1c;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 2px solid #222;
-  transition: transform 0.3s, box-shadow 0.3s;
-  cursor: pointer;
+/* Animacja pulsowania dla ramek zdjęć */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255,255,255,0.3);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 25px rgba(255,255,255,0.6);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255,255,255,0.3);
+  }
 }
 
-#projects .card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-}
-
-#projects .card img {
-  width: 100%;
+#gallery .card img {
+  width: 200px;
+  border-radius: 8px;
   display: block;
-  border-bottom: 2px solid #222;
-}
-
-/* --- Stopka (jeśli potrzebna) --- */
-footer {
-  text-align: center;
-  margin-top: 50px;
-  color: #888;
-}
-
-/* --- Responsywność --- */
-@media (max-width: 768px) {
-  header h1 {
-    font-size: 1.4em;
-  }
-
-  #tools .card {
-    width: 120px;
-    padding: 8px;
-  }
-
-  #projects .grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  }
 }
