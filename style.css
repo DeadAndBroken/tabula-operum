@@ -1,90 +1,72 @@
+/* Body */
 body {
   margin: 0;
-  background: linear-gradient(160deg, #0d0d0d, #1a1a1a);
-  color: #eee;
   font-family: 'Helvetica Neue', sans-serif;
+  background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+  color: #eee;
   text-align: center;
 }
 
+/* Nagłówek */
 header {
-  padding: 50px 20px 20px;
+  padding: 50px 20px 30px;
+  background: #111;
 }
 
 header h1 {
-  font-size: 3rem;
+  font-size: 2.8rem;
+  color: #ff6600; /* akcent kolorystyczny */
   margin: 0;
-  letter-spacing: 3px;
-  color: #fff;
-  animation: fadeDown 1s ease forwards;
+  line-height: 1.2;
 }
 
-header .subtitle {
-  font-weight: 300;
-  color: #ff6600;
-  margin-top: 10px;
-  animation: fadeDown 1.2s ease forwards;
+/* Sekcje */
+section {
+  padding: 40px 20px;
 }
 
-@keyframes fadeDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-section.info p {
-  max-width: 900px;
-  margin: 20px auto;
-  font-size: 1.1rem;
-  color: #ccc;
-  animation: fadeUp 1s ease forwards;
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.projects h2 {
-  font-size: 2rem;
-  margin-top: 40px;
-  color: #fff;
-  letter-spacing: 1.5px;
-  animation: fadeDown 1s ease forwards;
-}
-
-.gallery {
+/* Grid dla narzędzi i projektów */
+.grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
-  padding: 30px;
   justify-items: center;
+  align-items: stretch;
 }
 
-.gallery img {
-  width: 100%;
-  max-width: 400px;
-  object-fit: cover;
+/* Karty */
+.card {
+  background: #1c1c1c;
+  padding: 20px;
+  border-radius: 8px;
   border: 2px solid #222;
-  border-radius: 5px;
-  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-  cursor: pointer;
-  opacity: 0;
-  transform: scale(0.95);
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  width: 100%;
+  max-width: 280px;
+  text-align: center;
 }
 
-.gallery img.show {
-  opacity: 1;
-  transform: scale(1);
+.card h3 {
+  margin-top: 0;
+  color: #ff6600;
 }
 
-.gallery img:hover {
-  transform: scale(1.05);
+.card p {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(255,102,0,0.5);
   border-color: #ff6600;
-  box-shadow: 0 10px 30px rgba(255,102,0,0.5);
 }
 
+/* Stopka */
 footer {
   padding: 25px 0;
   border-top: 1px solid #333;
   font-size: 0.9rem;
   color: #aaa;
+  background: #111;
 }
