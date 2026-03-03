@@ -1,36 +1,30 @@
-/* Global */
+/* Ogólne */
 body {
+  font-family: Arial, sans-serif;
+  background-color: #111;
+  color: #eee;
   margin: 0;
   padding: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: #111; /* ciemne tło całej strony */
-  color: #fff; /* wszystkie napisy białe */
 }
 
-/* Nagłówek */
 header {
-  text-align: center;
   padding: 40px 20px;
-  font-size: 1.8rem;
-  color: #fff;
-}
-
-/* Sekcje */
-section {
-  padding: 40px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Nagłówki sekcji */
-section h2 {
   text-align: center;
-  margin-bottom: 30px;
-  font-size: 1.6rem;
-  color: #fff;
+  background: linear-gradient(90deg, #1a1a1a, #222);
 }
 
-/* GRID dla Narzędzi */
+header h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+/* Nagłówki sekcji wyśrodkowane */
+#tools h2, #projects h2 {
+  text-align: center;
+  margin: 30px 0 15px 0;
+}
+
+/* Narzędzia */
 #tools .grid {
   display: flex;
   flex-wrap: wrap;
@@ -38,72 +32,75 @@ section h2 {
   gap: 15px;
 }
 
-/* Kafelki Narzędzi */
 #tools .card {
-  background: #222; /* ciemny kafelek */
-  color: #fff;
-  width: 140px;
-  height: 80px;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 0 10px rgba(255,255,255,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
+  background: #1c1c1c;
+  border-radius: 6px;
+  padding: 10px 15px;
   text-align: center;
-  padding: 10px;
+  width: 180px;
+  height: 80px;
+  box-shadow: 0 0 8px rgba(255,255,255,0.2);
+  cursor: pointer;
   position: relative;
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Nazwa zawsze widoczna */
 #tools .card h3 {
-  margin: 0;
-  font-size: 0.95rem;
+  margin: 5px 0;
+  font-size: 1rem;
   z-index: 2;
 }
 
 /* Opis ukryty domyślnie */
-#tools .card .description {
+#tools .card p {
   opacity: 0;
-  font-size: 0.7rem;
-  margin-top: 5px;
+  font-size: 0.8rem;
+  margin: 0;
   transition: opacity 0.3s ease;
-  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-/* Hover narzędzia */
+/* Hover narzędzia - pokaz opis i powiększenie */
 #tools .card:hover {
-  transform: scale(1.15);
-  box-shadow: 0 0 25px rgba(255,255,255,0.5);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255,255,255,0.4);
 }
 
-#tools .card:hover .description {
+#tools .card:hover p {
   opacity: 1;
 }
 
-/* GRID dla galerii */
-#projects .grid {
+/* Galeria */
+#gallery {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px;
+  gap: 20px;
+  margin-bottom: 50px;
 }
 
-/* Kafelki galerii */
-#gallery img {
-  width: 180px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 12px;
+#gallery .card {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid #222;
   cursor: pointer;
+  box-shadow: 0 0 8px rgba(255,255,255,0.2);
+}
+
+#gallery .card img {
+  width: 200px;
+  display: block;
+  border-radius: 6px;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* Hover galerii - losowy efekt można zrobić w JS */
-#gallery img:hover {
+/* Hover galerii */
+#gallery .card img:hover {
   transform: scale(1.1);
   box-shadow: 0 0 20px rgba(255,255,255,0.4);
 }
