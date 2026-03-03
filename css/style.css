@@ -25,31 +25,37 @@ header h1 {
   color: #fff;
 }
 
-/* --- Sekcja Narzędzia – statyczna i zwarta --- */
+/* --- Sekcja Narzędzia – statyczne karty z cieniem --- */
 #tools .grid {
-  display: flex;             /* flex zamiast grid */
-  flex-wrap: wrap;           /* pozwala złamać wiersze, jeśli za szeroko */
-  justify-content: center;   /* wyśrodkowanie w poziomie */
-  gap: 10px;                 /* mniejszy odstęp między kartami */
+  display: flex;             
+  flex-wrap: wrap;           
+  justify-content: center;   
+  gap: 8px;                  /* mniejsze odstępy między kartami */
 }
 
 #tools .card {
-  background: #1c1c1c;      /* ciemne tło karty */
-  padding: 15px;             /* mniej miejsca w pionie i poziomie */
-  border-radius: 8px;
-  border: 2px solid #222;
-  width: 180px;              /* stała szerokość, żeby zmieściło się więcej kart w poziomie */
-  transition: none;          /* wyłączenie animacji */
+  background: #1c1c1c;      /* ciemne tło */
+  border-radius: 6px;
+  border: 1px solid #222;
+  padding: 10px;             
+  width: 150px;              /* mniejsze, żeby zmieściło się więcej kart */
+  text-align: center;
+  cursor: default;           
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5); /* lekki cień */
+  transition: none;          /* brak animacji */
 }
 
-#tools .card:hover {
-  transform: none;           /* żadnych efektów przy hover */
-  box-shadow: none;
-  border-color: #222;
+#tools .card h3 {
+  margin: 4px 0;
+  font-size: 0.95em;
+  font-weight: bold;
+  color: #eee;
 }
 
-#tools .card h3, #tools .card p {
-  margin: 5px 0;             /* mniejsze odstępy między tytułem a opisem */
+#tools .card p {
+  margin: 2px 0;
+  font-size: 0.8em;
+  color: #ccc;
 }
 
 /* --- Sekcja Projekty / Demonstracje --- */
@@ -77,14 +83,13 @@ header h1 {
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
-/* --- Galeria zdjęć w projektach --- */
 #projects .card img {
   width: 100%;
   display: block;
   border-bottom: 2px solid #222;
 }
 
-/* --- Stopka --- */
+/* --- Stopka (jeśli potrzebna) --- */
 footer {
   text-align: center;
   margin-top: 50px;
@@ -98,7 +103,8 @@ footer {
   }
 
   #tools .card {
-    width: 140px;
+    width: 120px;
+    padding: 8px;
   }
 
   #projects .grid {
