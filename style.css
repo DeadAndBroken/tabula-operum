@@ -1,53 +1,90 @@
-/* Body i ogólne tło */
 body {
   margin: 0;
-  background-color: #0d0d0d; /* głęboka czerń */
-  color: #fff;
+  background: linear-gradient(160deg, #0d0d0d, #1a1a1a);
+  color: #eee;
   font-family: 'Helvetica Neue', sans-serif;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-/* Nagłówek */
-header h1 {
   text-align: center;
-  padding: 30px 0;
-  font-weight: 300;
-  letter-spacing: 2px;
-  color: #f0f0f0;
-  border-bottom: 1px solid #333;
 }
 
-/* Galeria */
+header {
+  padding: 50px 20px 20px;
+}
+
+header h1 {
+  font-size: 3rem;
+  margin: 0;
+  letter-spacing: 3px;
+  color: #fff;
+  animation: fadeDown 1s ease forwards;
+}
+
+header .subtitle {
+  font-weight: 300;
+  color: #ff6600;
+  margin-top: 10px;
+  animation: fadeDown 1.2s ease forwards;
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+section.info p {
+  max-width: 900px;
+  margin: 20px auto;
+  font-size: 1.1rem;
+  color: #ccc;
+  animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.projects h2 {
+  font-size: 2rem;
+  margin-top: 40px;
+  color: #fff;
+  letter-spacing: 1.5px;
+  animation: fadeDown 1s ease forwards;
+}
+
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 15px;
-  padding: 25px;
+  gap: 20px;
+  padding: 30px;
+  justify-items: center;
 }
 
-/* Obrazki */
 .gallery img {
   width: 100%;
-  height: 100%;
+  max-width: 400px;
   object-fit: cover;
   border: 2px solid #222;
-  transition: transform 0.3s, border-color 0.3s;
+  border-radius: 5px;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
   cursor: pointer;
+  opacity: 0;
+  transform: scale(0.95);
 }
 
-/* Efekt hover */
+.gallery img.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
 .gallery img:hover {
-  transform: scale(1.03);
-  border-color: #ff6600; /* mocny akcentowy pomarańcz */
+  transform: scale(1.05);
+  border-color: #ff6600;
+  box-shadow: 0 10px 30px rgba(255,102,0,0.5);
 }
 
-/* Responsywność – na małych ekranach */
-@media (max-width: 600px) {
-  .gallery {
-    grid-template-columns: 1fr;
-    gap: 10px;
-    padding: 15px;
-  }
+footer {
+  padding: 25px 0;
+  border-top: 1px solid #333;
+  font-size: 0.9rem;
+  color: #aaa;
 }
