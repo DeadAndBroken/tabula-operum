@@ -1,48 +1,53 @@
+/* Body i ogólne tło */
 body {
   margin: 0;
-  font-family: 'Roboto Mono', monospace;
-  background: #121212;
-  color: #e0e0e0;
+  background-color: #0d0d0d; /* głęboka czerń */
+  color: #fff;
+  font-family: 'Helvetica Neue', sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-header, footer {
+/* Nagłówek */
+header h1 {
   text-align: center;
-  padding: 2rem;
-  background: #1c1c1c;
+  padding: 30px 0;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: #f0f0f0;
+  border-bottom: 1px solid #333;
 }
 
-h1, h2 {
-  font-weight: 400;
-  color: #c0c0ff;
-}
-
-section {
-  padding: 2rem;
-}
-
-.grid {
+/* Galeria */
+.gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 15px;
+  padding: 25px;
 }
 
-.card {
-  background: #1c1c1c;
-  border: 1px solid #333;
-  padding: 1rem;
-  transition: transform 0.2s, border-color 0.2s;
+/* Obrazki */
+.gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 2px solid #222;
+  transition: transform 0.3s, border-color 0.3s;
+  cursor: pointer;
 }
 
-.card:hover {
+/* Efekt hover */
+.gallery img:hover {
   transform: scale(1.03);
-  border-color: #6666ff;
+  border-color: #ff6600; /* mocny akcentowy pomarańcz */
 }
 
-a {
-  color: #8888ff;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
+/* Responsywność – na małych ekranach */
+@media (max-width: 600px) {
+  .gallery {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 15px;
+  }
 }
