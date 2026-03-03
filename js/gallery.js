@@ -1,6 +1,5 @@
 const gallery = document.getElementById('gallery');
 
-// Lista zdjęć
 const images = [
   "images/A1B2C.jpeg",
   "images/B8C9D.jpeg",
@@ -21,17 +20,16 @@ const images = [
   "images/Z3X4Y.jpeg"
 ];
 
-// Tworzenie galerii
 images.forEach(src => {
   const img = document.createElement('img');
   img.src = src;
 
-  // Hover – losowe podświetlenie
   img.addEventListener('mouseenter', () => {
+    // losowe podświetlenie
     const randX = (Math.random() * 10) - 5;
     const randY = (Math.random() * 10) - 5;
     const randBlur = 10 + Math.random() * 10;
-    const randColor = `rgba(255,255,255,${0.2 + Math.random() * 0.3})`;
+    const randColor = `rgba(255,255,255,${0.2 + Math.random() * 0.5})`;
 
     img.style.transform = `scale(1.1) translate(${randX}px, ${randY}px)`;
     img.style.boxShadow = `0 0 ${randBlur}px ${randColor}`;
@@ -42,7 +40,6 @@ images.forEach(src => {
     img.style.boxShadow = '0 0 8px rgba(255,255,255,0.2)';
   });
 
-  // Kliknięcie – powiększenie
   img.addEventListener('click', () => {
     const overlay = document.createElement('div');
     overlay.style.position = 'fixed';
