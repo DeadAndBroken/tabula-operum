@@ -28,13 +28,27 @@ images.forEach(src => {
   img.src = src;
   card.appendChild(img);
 
-  // losowy kolor poświaty
-  const glowColor = `hsl(${Math.floor(Math.random()*360)}, 80%, 60%)`;
-  card.style.boxShadow = `0 0 15px ${glowColor}`;
+  card.style.boxShadow = "0 0 8px rgba(255,255,255,0.2)";
 
-  // losowa animacja pulsowania
-  const duration = (Math.random()*3 + 2).toFixed(2); // 2-5s
-  card.style.animation = `pulse ${duration}s infinite alternate`;
+  card.addEventListener("mouseenter", () => {
+    const hue = Math.floor(Math.random() * 360);
+    const sat = Math.floor(Math.random() * 50 + 50);
+    const light = Math.floor(Math.random() * 40 + 50);
+    const glow = `hsl(${hue}, ${sat}%, ${light}%)`;
+
+    const scale = (Math.random() * 0.15 + 1).toFixed(2);
+    const duration = (Math.random() * 0.8 + 0.5).toFixed(2);
+
+    card.style.transition = `transform ${duration}s ease-in-out, box-shadow ${duration}s ease-in-out`;
+    card.style.transform = `scale(${scale})`;
+    card.style.boxShadow = `0 0 20px ${glow}, 0 0 40px ${glow}`;
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.style.transition = "transform 0.5s ease, box-shadow 0.5s ease";
+    card.style.transform = "scale(1)";
+    card.style.boxShadow = "0 0 8px rgba(255,255,255,0.2)";
+  });
 
   gallery.appendChild(card);
 });
