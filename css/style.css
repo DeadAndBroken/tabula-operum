@@ -56,30 +56,41 @@ section h2 {
   box-shadow: 0 0 8px rgba(255,255,255,0.2);
   cursor: pointer;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #tools .card h3 {
   margin: 0;
   font-size: 0.95rem;
+  z-index: 2;
 }
 
 #tools .card p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   opacity: 0;
-  font-size: 0.7rem;
-  margin-top: 8px;
+  font-size: 0.75rem;
+  margin: 0;
   color: #ddd;
+  z-index: 3;
   transition: opacity 0.3s ease;
 }
 
-#tools .card:hover {
-  transform: scale(1.15);
-  box-shadow: 0 0 25px rgba(255,255,255,0.5);
+#tools .card:hover h3 {
+  opacity: 0.1; /* nazwa blaknie */
 }
 
 #tools .card:hover p {
   opacity: 1;
+}
+
+/* Hover narzędzia */
+#tools .card:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 25px rgba(255,255,255,0.5);
 }
 
 /* Gallery grid */
@@ -97,5 +108,5 @@ section h2 {
   object-fit: cover;
   border-radius: 12px;
   cursor: pointer;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
