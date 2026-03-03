@@ -1,56 +1,75 @@
-const images = [
-  "images/A1B2C.jpeg",
-  "images/B8C9D.jpeg",
-  "images/F1G2H.jpeg",
-  "images/J3K4L.jpeg",
-  "images/K1L2M.jpeg",
-  "images/M4N5P.jpeg",
-  "images/M5N6O.jpeg",
-  "images/P9Q1R.jpeg",
-  "images/Q2R3S.jpeg",
-  "images/R7S8T.jpeg",
-  "images/S2T3U.jpeg",
-  "images/T7U6V.jpeg",
-  "images/U9V1W.jpeg",
-  "images/V4W5X.jpeg",
-  "images/X2Y3Z.jpeg",
-  "images/Y6Z7A.jpeg",
-  "images/Z3X4Y.jpeg"
-];
+/* Ogólne */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #111;
+  color: #eee;
+  margin: 0;
+  padding: 0;
+}
 
-const gallery = document.getElementById("gallery");
+header {
+  padding: 40px 20px;
+  text-align: center;
+  background: linear-gradient(90deg, #1a1a1a, #222);
+}
 
-images.forEach(src => {
-  const card = document.createElement("div");
-  card.classList.add("card");
+header h1 {
+  font-size: 2rem;
+  margin: 0;
+}
 
-  const img = document.createElement("img");
-  img.src = src;
-  card.appendChild(img);
+/* Nagłówki sekcji wyśrodkowane */
+#tools h2, #projects h2 {
+  text-align: center;
+  margin: 30px 0 15px 0;
+}
 
-  // Podstawowy cień
-  card.style.boxShadow = "0 0 8px rgba(255,255,255,0.2)";
+/* Narzędzia */
+#tools .grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
 
-  // Losowa animacja przy każdym najechaniu
-  card.addEventListener("mouseenter", () => {
-    const hue = Math.floor(Math.random() * 360);        // losowy kolor
-    const sat = Math.floor(Math.random() * 50 + 50);   // nasycenie 50-100%
-    const light = Math.floor(Math.random() * 40 + 50); // jasność 50-90%
-    const glow = `hsl(${hue}, ${sat}%, ${light}%)`;
+#tools .card {
+  background: #1c1c1c;
+  border-radius: 6px;
+  padding: 10px 15px;
+  text-align: center;
+  width: 180px;
+  box-shadow: 0 0 8px rgba(255,255,255,0.2);
+}
 
-    const scale = (Math.random() * 0.15 + 1).toFixed(2);  // 1.0-1.15
-    const duration = (Math.random() * 0.8 + 0.5).toFixed(2); // 0.5-1.3s
+#tools .card h3 {
+  margin: 5px 0;
+  font-size: 1rem;
+}
 
-    card.style.transition = `transform ${duration}s ease-in-out, box-shadow ${duration}s ease-in-out`;
-    card.style.transform = `scale(${scale})`;
-    card.style.boxShadow = `0 0 20px ${glow}, 0 0 40px ${glow}`;
-  });
+#tools .card p {
+  font-size: 0.8rem;
+  margin: 0;
+}
 
-  card.addEventListener("mouseleave", () => {
-    card.style.transition = "transform 0.5s ease, box-shadow 0.5s ease";
-    card.style.transform = "scale(1)";
-    card.style.boxShadow = "0 0 8px rgba(255,255,255,0.2)";
-  });
+/* Galeria */
+#gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 50px;
+}
 
-  gallery.appendChild(card);
-});
+#gallery .card {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid #222;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(255,255,255,0.2);
+}
+
+#gallery .card img {
+  width: 200px;
+  display: block;
+  border-radius: 6px;
+}
