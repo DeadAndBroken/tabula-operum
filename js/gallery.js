@@ -9,12 +9,9 @@ const images = [
   "images/Y6Z7A.jpeg","images/Z3X4Y.jpeg"
 ];
 
-// funkcja losowego koloru w stylu steel rainbow
 function getRandomSteelRainbow() {
-  const colors = [
-    '#4682B4','#5F9EA0','#B0C4DE','#87CEFA','#1E90FF','#00BFFF','#6495ED','#7B68EE','#6A5ACD','#4169E1'
-  ];
-  return colors[Math.floor(Math.random() * colors.length)];
+  const colors = ['#4682B4','#5F9EA0','#B0C4DE','#87CEFA','#1E90FF','#00BFFF','#6495ED','#7B68EE','#6A5ACD','#4169E1'];
+  return colors[Math.floor(Math.random()*colors.length)];
 }
 
 images.forEach(src => {
@@ -25,16 +22,19 @@ images.forEach(src => {
 
   img.addEventListener('mouseenter', () => {
     const baseColor = getRandomSteelRainbow();
-    let opacity = 0.2;
-    let increasing = true;
+    let light = 0.2;
+    let rising = true;
 
     pulseInterval = setInterval(() => {
-      if(increasing) opacity += 0.01;
-      else opacity -= 0.01;
-      if(opacity >= 0.6) increasing = false;
-      if(opacity <= 0.2) increasing = true;
-      img.style.boxShadow = `0 0 20px ${baseColor}${Math.floor(opacity*255).toString(16)}`;
-      img.style.transform = `scale(1.05)`;
+      if(rising) light += 0.01;
+      else light -= 0.01;
+      if(light >= 0.6) rising = false;
+      if(light <= 0.2) rising = true;
+
+      // tworzymy rgba dla box-shadow
+      const shadowColor = hexToRgba(baseColor, light);
+      img.style.boxShadow = `0 0 20px ${shadowColor}`;
+      img.style.transform = 'scale(1.05)';
     }, 20);
   });
 
@@ -47,8 +47,8 @@ images.forEach(src => {
   img.addEventListener('click', () => {
     const overlay = document.createElement('div');
     overlay.style.position = 'fixed';
-    overlay.style.top = '0';
-    overlay.style.left = '0';
+    overlay.style.top = 0;
+    overlay.style.left = 0;
     overlay.style.width = '100%';
     overlay.style.height = '100%';
     overlay.style.background = 'rgba(0,0,0,0.9)';
@@ -56,7 +56,7 @@ images.forEach(src => {
     overlay.style.alignItems = 'center';
     overlay.style.justifyContent = 'center';
     overlay.style.cursor = 'pointer';
-    overlay.style.zIndex = '1000';
+    overlay.style.zIndex = 1000;
 
     const fullImg = document.createElement('img');
     fullImg.src = img.src;
@@ -71,3 +71,12 @@ images.forEach(src => {
 
   gallery.appendChild(img);
 });
+
+// helper: hex na rgba
+function hexToRgba(hex, alpha){
+  const bigint = parseInt(hex.slice(1),16);
+  const r = (bigint >>16)&255;
+  const g = (bigint >>8)&255;
+  const b = bigint &255;
+  return `rgba(${r},${g},${b},${alpha})`;
+}
