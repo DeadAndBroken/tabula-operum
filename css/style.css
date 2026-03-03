@@ -1,0 +1,71 @@
+/* Ogólne */
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  background: linear-gradient(135deg, #0f0f0f, #1a1a1a); /* ciemne gradientowe tło */
+  color: #eee;
+  text-align: center;
+}
+
+/* Nagłówek */
+header {
+  padding: 60px 20px 40px;
+  background: #111;
+}
+
+header h1 {
+  font-size: 2.8rem;
+  color: #ff6600; /* kolor akcentowy */
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Sekcje */
+section {
+  padding: 50px 20px;
+}
+
+/* Grid dla narzędzi i projektów */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  justify-items: center;
+  align-items: stretch;
+}
+
+/* Karty */
+.card {
+  background: #1c1c1c;
+  padding: 25px;
+  border-radius: 10px;
+  border: 2px solid #222;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  width: 100%;
+  max-width: 280px;
+  text-align: center;
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #ff6600;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.card:hover {
+  transform: translateY(-7px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(255,102,0,0.5);
+  border-color: #ff6600;
+}
+
+/* O mnie */
+#about p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
