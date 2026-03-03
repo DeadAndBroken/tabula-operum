@@ -1,43 +1,47 @@
 const gallery = document.getElementById('gallery');
 
 const images = [
-  "images/A1B2C.jpeg",
-  "images/B8C9D.jpeg",
-  "images/F1G2H.jpeg",
-  "images/J3K4L.jpeg",
-  "images/K1L2M.jpeg",
-  "images/M4N5P.jpeg",
-  "images/M5N6O.jpeg",
-  "images/P9Q1R.jpeg",
-  "images/Q2R3S.jpeg",
-  "images/R7S8T.jpeg",
-  "images/S2T3U.jpeg",
-  "images/T7U6V.jpeg",
-  "images/U9V1W.jpeg",
-  "images/V4W5X.jpeg",
-  "images/X2Y3Z.jpeg",
-  "images/Y6Z7A.jpeg",
-  "images/Z3X4Y.jpeg"
+  "images/A1B2C.jpeg","images/B8C9D.jpeg","images/F1G2H.jpeg",
+  "images/J3K4L.jpeg","images/K1L2M.jpeg","images/M4N5P.jpeg",
+  "images/M5N6O.jpeg","images/P9Q1R.jpeg","images/Q2R3S.jpeg",
+  "images/R7S8T.jpeg","images/S2T3U.jpeg","images/T7U6V.jpeg",
+  "images/U9V1W.jpeg","images/V4W5X.jpeg","images/X2Y3Z.jpeg",
+  "images/Y6Z7A.jpeg","images/Z3X4Y.jpeg"
 ];
+
+// funkcja losowego koloru w stylu steel rainbow
+function getRandomSteelRainbow() {
+  const colors = [
+    '#4682B4','#5F9EA0','#B0C4DE','#87CEFA','#1E90FF','#00BFFF','#6495ED','#7B68EE','#6A5ACD','#4169E1'
+  ];
+  return colors[Math.floor(Math.random() * colors.length)];
+}
 
 images.forEach(src => {
   const img = document.createElement('img');
   img.src = src;
 
-  img.addEventListener('mouseenter', () => {
-    // losowe podświetlenie
-    const randX = (Math.random() * 10) - 5;
-    const randY = (Math.random() * 10) - 5;
-    const randBlur = 10 + Math.random() * 10;
-    const randColor = `rgba(255,255,255,${0.2 + Math.random() * 0.5})`;
+  let pulseInterval;
 
-    img.style.transform = `scale(1.1) translate(${randX}px, ${randY}px)`;
-    img.style.boxShadow = `0 0 ${randBlur}px ${randColor}`;
+  img.addEventListener('mouseenter', () => {
+    const baseColor = getRandomSteelRainbow();
+    let opacity = 0.2;
+    let increasing = true;
+
+    pulseInterval = setInterval(() => {
+      if(increasing) opacity += 0.01;
+      else opacity -= 0.01;
+      if(opacity >= 0.6) increasing = false;
+      if(opacity <= 0.2) increasing = true;
+      img.style.boxShadow = `0 0 20px ${baseColor}${Math.floor(opacity*255).toString(16)}`;
+      img.style.transform = `scale(1.05)`;
+    }, 20);
   });
 
   img.addEventListener('mouseleave', () => {
-    img.style.transform = 'scale(1)';
+    clearInterval(pulseInterval);
     img.style.boxShadow = '0 0 8px rgba(255,255,255,0.2)';
+    img.style.transform = 'scale(1)';
   });
 
   img.addEventListener('click', () => {
